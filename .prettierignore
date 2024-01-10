@@ -1,0 +1,17 @@
+# https://prettier.io/docs/en/ignore.html
+
+# FOLDERS ###############################
+
+.github/
+.husky/
+.vscode/
+dist/
+docs/
+ignore/
+node_modules/
+# resources
+# scripts
+# src
+# tests
+
+# FILES #################################

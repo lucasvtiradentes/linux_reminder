@@ -1,0 +1,92 @@
+{
+  "options": {
+    "playTextToSpeech": true,
+    "waitConfirmation": false
+  },
+  "reminders": [
+    {
+      "name": "Início do expediente",
+      "category": "UDS",
+      "time": "08:00",
+      "days": "weekday"
+    },
+    {
+      "name": "Retorno do expediente",
+      "category": "UDS",
+      "time": "13:15",
+      "days": "weekday"
+    },
+    {
+      "name": "Colocar horas no redmine",
+      "category": "UDS",
+      "time": "17:30",
+      "days": "weekday"
+    },
+    {
+      "name": "Fim do expediente",
+      "category": "UDS",
+      "time": "18:00",
+      "days": "weekday"
+    },
+    {
+      "name": "Lanche da manhã I",
+      "category": "ALIMENTAÇÃO",
+      "time": "07:30",
+      "days": "everyday"
+    },
+    {
+      "name": "Lanche da manhã II",
+      "category": "ALIMENTAÇÃO",
+      "time": "09:30",
+      "days": "everyday"
+    },
+    {
+      "name": "ALMOÇO",
+      "category": "ALIMENTAÇÃO",
+      "time": "12:00",
+      "days": "weekday"
+    },
+    {
+      "name": "Lanche da tarde I",
+      "category": "ALIMENTAÇÃO",
+      "time": "15:30",
+      "days": "everyday"
+    },
+    {
+      "name": "Lanche da tarde II",
+      "category": "ALIMENTAÇÃO",
+      "time": "18:30",
+      "days": "everyday"
+    },
+    {
+      "name": "Jantar",
+      "category": "ALIMENTAÇÃO",
+      "time": "20:30",
+      "days": "everyday"
+    },
+    {
+      "name": "Lanche da noite I",
+      "category": "ALIMENTAÇÃO",
+      "time": "22:30",
+      "days": "everyday"
+    },
+    {
+      "name": "Tomar banho",
+      "category": "HIGIENE",
+      "time": "07:00",
+      "days": "everyday"
+    },
+    {
+      "name": "Tomar banho",
+      "category": "HIGIENE",
+      "time": "18:00",
+      "days": "everyday"
+    },
+    {
+      "name": "Sair do PC",
+      "category": "OUTROS",
+      "time": "23:00",
+      "days": "everyday"
+    }
+  ]
+}
