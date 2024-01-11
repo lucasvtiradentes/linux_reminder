@@ -9,9 +9,8 @@
 docs/
 ignore/
 node_modules/
-resources/
-scripts/
-src/*.ts
+examples/
+src/
 tests/
 
 # FILES #################################

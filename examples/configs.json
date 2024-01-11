@@ -1,7 +1,8 @@
 {
   "options": {
     "playTextToSpeech": true,
-    "waitConfirmation": false
+    "useZenitAsNotifierSender": false,
+    "notificationExpireSeconds": 1000
   },
   "reminders": [
     {

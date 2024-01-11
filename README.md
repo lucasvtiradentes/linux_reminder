@@ -1,1 +1,0 @@
-spd-say 'autorun loaded'

@@ -1,10 +1,13 @@
 #! /usr/bin/env bin
 
-csPath=./dist/index.js
-filePath="$(pwd)/examples/configs.json"
+tsxPath="$(pwd)/node_modules/.bin/tsx"
+mainFile="$(pwd)/src/index.ts"
+configsFile="$(pwd)/examples/configs.json"
 
-# "$csPath"
-"$csPath" -s "$filePath" # add cronjob looping instruction
+"$tsxPath" "$mainFile"
+# "$tsxPath" "$mainFile" -s "$configsFile" # add cronjob looping instruction
+# "$tsxPath" "$mainFile" -r
+# "$tsxPath" "$mainFile" -u
 
-# "$csPath" -V             # show version
-# "$csPath" -h             # show help
+# "$tsxPath" "$mainFile" -V             # show version
+# "$tsxPath" "$mainFile" -h             # show help

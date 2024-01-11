@@ -14,8 +14,8 @@ Please proceed with a Pull Request only after you're assigned. It'd be sad if yo
 1. Install with:
 
    ```sh
-   git clone https://github.com/lucasvtiradentes/gcal-sync
-   cd gcal-sync
+   git clone https://github.com/lucasvtiradentes/linux_reminder
+   cd linux_reminder
    npm install
    ```
 
@@ -24,7 +24,7 @@ Please proceed with a Pull Request only after you're assigned. It'd be sad if yo
    - adding better docs;
    - adding more flag options.
 
-3. Test if `gcal-sync` is working properly, by:
+3. Test if `linux_reminder` is working properly, by:
 
    ```sh
    npm run test
