@@ -1,7 +1,7 @@
 {
   "name": "linux_reminder",
   "description": "⏰ simple crontab based reminder designed to be used in daily tasks on linux.",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "keywords": [
     "linux",
     "crontab",
