@@ -1,7 +1,7 @@
 <a name="TOC"></a>
 
 <h3 align="center">
-  CONTAINER SCHEDULER
+  LINUX REMINDER
 </h3>
 
 <div align="center">
@@ -50,16 +50,34 @@
 
 ## :trumpet: Overview
 
-Schedule your daily reminders based on a simple config file.
+Schedule daily reminders easily with a simple config file. Organize and receive alerts for important tasks efficiently.
+
+<div align="center">
+  <table>
+    <tr>
+      <td>
+        <a href="#"><img width="400px" src="./.github/images/notification.png" /></a>
+      </td>
+      <td>
+        <a href="#"><img width="400px" src="./.github/images/notification_alt.png" /></a>
+      </td>
+    </tr>
+
+  </table>
+</div>
 
 ## :question: Motivation
 
-My main motivation for building this tool was to dont miss my main daily tasks such as nutrition related ones due to overfocus on work.
+My primary motivation for developing this tool was to ensure I don't miss my main daily tasks, such as those related to nutrition, due to being overly focused on work.
+
+> :warning: **warning**: The reason I opted for the `at` command to schedule tasks, instead of the popular `crontab`, was because the latter couldn't properly execute the `spd-say` and `notify-send` commands. Despite searching for about 2 hours, I didn't find a successful solution.
 
 ## :dart: Features<a href="#TOC"><img align="right" src="./.github/images/up_arrow.png" width="22"></a>
 
 &nbsp;&nbsp;&nbsp;✔️ type safe api methods by using [zod](https://github.com/colinhacks/zod) validation;<br>
 &nbsp;&nbsp;&nbsp;✔️ three ways to specify task frequency: `weekday`, `weekend` or `everyday`;<br>
+&nbsp;&nbsp;&nbsp;✔️ option to speach the name of the task;<br>
+&nbsp;&nbsp;&nbsp;✔️ option to choose the notification style between: `notify-send` or `zenity`.<br>
 
 ## :warning: Requirements<a href="#TOC"><img align="right" src="./.github/images/up_arrow.png" width="22"></a>
 
@@ -67,24 +85,30 @@ In order to use this project in your computer, you need to have the following it
 
 - [npm](https://www.npmjs.com/): To install the package. Npm is installed alongside nodejs;
 - [nodejs](https://nodejs.org/en/): To actually run the package.
+- [at](https://linuxize.com/post/at-command-in-linux/): To schedule the tasks to run on specified times.
+- [zenity](https://howtoinstall.co/package/zenity): to show custom notifications (optional).
 
 ## :bulb: Usage<a href="#TOC"><img align="right" src="./.github/images/up_arrow.png" width="22"></a>
 
-To use it from the registry, first install the npm package:
+First, make sure to install the `at` command on linux, which will be used to schedule the reminders:
+
+```bash
+sudo apt install at
+```
+
+Install the linux_reminder npm package:
 
 ```bash
 # Install the package
 npm install linux_reminder -g
 ```
 
-Create a container configs file such as this (which follows [this schema](./src/schemas/configs.schema.ts)):
+Create a reminder configs file such as this (which follows [this schema](./src/schemas/configs.schema.ts)):
 
 ```json
 {
   "options": {
-    "playTextToSpeech": true,
-    "useZenitAsNotifierSender": false,
-    "notificationExpireSeconds": 1000
+    "playTextToSpeech": true
   },
   "reminders": [
     {
@@ -101,21 +125,30 @@ Create a container configs file such as this (which follows [this schema](./src/
     }
   ]
 }
-
 ```
 
-After that you can simply setup the cronjob to run every five minutes (if not changed by the options):
+After that, open a terminal and paste this:
 
 ```bash
-linux_reminder -s "/home/lucasvtiradentes/Desktop/configs.json"
-# lr -s "/home/lucasvtiradentes/Desktop/configs.json"  <-- works as well
+echo $(which node) $(which linux_reminder)
+# /home/lucasvtiradentes/.nvm/versions/node/v18.19.0/bin/node /home/lucasvtiradentes/.nvm/versions/node/v18.19.0/bin/linux_reminder
+```
+
+Get the above command result and join with the `-s path_of_your_config.json`, in my case it would be:
+
+```bash
+/home/lucasvtiradentes/.nvm/versions/node/v18.19.0/bin/node /home/lucasvtiradentes/.nvm/versions/node/v18.19.0/bin/linux_reminder -s "/home/lucasvtiradentes/Desktop/configs.json"
 
 # tip: make sure to specify the absolute path, do not use $USER/Desktop or ~/Desktop
 ```
 
-And thats it! now the program will schedule all your tasks on the current day, which means you'll have to add it to the autorun of your linux in order to get it running everyday.
+Finally you can copy the above command and past it on a new instance of Ubuntu's `Startup Applications`.
 
-To see further usage, check out the provided [example](./examples/simple.sh).
+<div align="center">
+  <a href="#"><img height="400px" src="./.github/images/startup_applications.png" /></a>
+</div>
+
+And thats it! Now everytime your Ubuntu startup, it will setup all the current day's reminders!
 
 ### Available configs options
 
@@ -127,6 +160,8 @@ To see further usage, check out the provided [example](./examples/simple.sh).
 }
 ```
 
+Notice that if you specify to use `zenity`, you'll need to have it installed.
+
 ### Available CLI options
 
 ```bash
@@ -137,8 +172,8 @@ Usage: linux_reminder [options]
 Options:
   -V, --version       output the version number
   -s, --setup <file>  setup the reminders to run on the specified datetimes
-  -u, --uninstall     remove all configured reminders
-  -r, --reminders     show all configured reminders
+  -r, --remove        remove all configured reminders
+  -l, --list          list all configured reminders
   -h, --help          display help for command
 ```
 
