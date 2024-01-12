@@ -2,9 +2,9 @@
 
 import { program } from 'commander';
 import { platform } from 'node:os';
-import { remindersCommand } from './cli_commands/reminders';
+import { listCommand } from './cli_commands/list';
 import { setupCommand } from './cli_commands/setup';
-import { uninstallCommand } from './cli_commands/uninstall';
+import { removeCommand } from './cli_commands/remove';
 import { APP_CONSTS } from './consts/app_data';
 import { CONFIGS } from './consts/configs';
 import { ERRORS } from './consts/errors';
@@ -13,8 +13,8 @@ import { readJson } from './utils/read_json';
 
 type TProgramOptions = {
   setup: string;
-  uninstall: boolean;
-  reminders: boolean;
+  remove: boolean;
+  list: boolean;
 };
 
 function setupProgramConfigs() {
@@ -23,8 +23,8 @@ function setupProgramConfigs() {
   // prettier-ignore
   program
     .option('-s, --setup <file>', 'setup the reminders to run on the specified datetimes')
-    .option('-u, --uninstall', 'remove all configured reminders')
-    .option('-r, --reminders', 'show all configured reminders')
+    .option('-r, --remove', 'remove all configured reminders')
+    .option('-l, --list', 'list all configured reminders')
 
   return program;
 }
@@ -45,13 +45,13 @@ async function main() {
     throw new Error(ERRORS.invalid_os);
   }
 
-  if (options.uninstall) {
-    await uninstallCommand();
+  if (options.remove) {
+    await removeCommand();
     return;
   }
 
-  if (options.reminders) {
-    await remindersCommand();
+  if (options.list) {
+    await listCommand();
     return;
   }
 

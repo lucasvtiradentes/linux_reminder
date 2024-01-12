@@ -1,7 +1,7 @@
 import { listAllAtJobs } from '../system_commands/at_commands';
 import { logger } from '../utils/logger';
 
-export async function remindersCommand() {
+export async function listCommand() {
   const allScheduledJobs = await listAllAtJobs();
 
   const parsedItems = allScheduledJobs.map((item) => {
